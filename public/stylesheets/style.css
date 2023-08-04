@@ -1,0 +1,103 @@
+#map {
+  height: 670px;
+  left: 1px;
+  border-radius: 5%;
+}
+h4 {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-decoration: underline double rgb(93, 124, 168);
+  color: rgb(105, 119, 210);
+  background-color: rgb(216, 227, 241);
+  border-radius: 50%;
+  margin-left: 25px;
+}
+.form-control {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px dotted rgb(105, 119, 210);
+  text-align: center;
+  color: rgb(179, 82, 97);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.form-control::placeholder {
+  color: rgb(186, 186, 186);
+}
+h6 {
+  text-align: center;
+  color: rgb(105, 149, 170);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#img {
+  width: 40px;
+  opacity: 60%;
+  /* content: url("https://img.icons8.com/external-others-inmotus-design/67/000000/external-Bird-colibri-others-inmotus-design-25.png") */
+  content: url("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-bird-tropical-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png");
+}
+.leaflet-popup-content-wrapper {
+  color: navy;
+  font-weight: bold;
+}
+.container {
+  width: 100%;
+}#navrow{
+  width: 100%;
+}
+.search {
+  border-top: 0ch;
+  border-left: 0ch;
+  border-right: 0ch;
+  border-color:rgb(82, 158, 158);
+  font-size: small;
+  width: 12em;
+  text-align: center;
+}
+#video.col-3 {
+  padding-top: 20px;
+  border-width: 2px;
+  border-color: rgb(82, 158, 158);
+  border-style: dotted;
+  border-radius: 2em;
+}
+#row {
+  margin-right: 5px;
+  margin-left: -3px;
+}
+iframe {
+  margin-top: 10px;
+  width: 100%; 
+}.temp{
+  color:navy;
+  font-weight: bold;
+}#temp1{
+  color:cadetblue;
+}.leaflet-popup-content-wrapper{
+  border-radius: 50%;
+}#bimg{
+  width: 100%;
+  margin-top: 10px;
+  height: 23vh;
+}.table{
+  font-size: 10px;
+  margin-top: -12px; 
+  text-align: center;
+}.p{
+  text-align:right;
+  margin-right: 2%;
+  font-size: small;
+  color:rgb(76, 128, 130);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}caption{
+  padding: 0.1em;
+  text-align: end;
+}#nav.col-2{
+  margin-left: 10px;
+}nav{
+  margin-left: 30px;
+}.form-control:disabled{
+  background-color:white;
+}#step1{
+  margin-top: 7px;
+  margin-right: 10px;
+}
