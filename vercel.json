@@ -1,10 +1,5 @@
 {
-  "version": 2,
-  "routes": [
-    { "src": "/(.*)", "dest": "/app.js" }
-  ],
-  "builds": [
-    { "src": "/index.html", "use": "@vercel/static-build" },
-    { "src": "/app.js", "use": "@vercel/node" }
-  ]
-}
+    "version": 2,
+    "functions": { "api": { "handler": "app.js" } }
+  }
+  
