@@ -20,5 +20,5 @@ BirdyMap is a mashed-up web application that provides a map interface for viewin
 - **Flickr API**: Used to fetch bird images.
 - **eBird API**: Used to fetch bird sighting data.
 
-To use BirdyMap, navigate to `https://birdymap.onrender.com/` . 
+To use BirdyMap, navigate to  https://birdymap.onrender.com
 
