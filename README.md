@@ -16,9 +16,9 @@ BirdyMap is a mashed-up web application that provides a map interface for viewin
 
 ### APIs
 
-- **YouTube API**: Used to fetch bird-related videos.
-- **Flickr API**: Used to fetch bird images.
-- **eBird API**: Used to fetch bird sighting data.
+- **YouTube API**: Used to fetch bird-related videos. https://developers.google.com/youtube/v3
+- **Flickr API**: Used to fetch bird images. https://www.npmjs.com/package/flickr-sdk
+- **eBird API**: Used to fetch bird sighting data. https://documenter.getpostman.com/view/664302/S1ENwy59
 
 To use BirdyMap, navigate to  https://birdymap.onrender.com
 
