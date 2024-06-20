@@ -1,24 +1,64 @@
+
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
-router.get("/:birdName", (req, res) => {
-  const options = {
-    method: 'GET',
-  url: 'https://api.flickr.com/services/feeds/photos_public.gne',
-  params: {tags: req.params.birdName, format: 'json', nojsoncallback: '1'},
-  headers: {
-    cookie: 'ccc=%257B%2522needsConsent%2522%253Afalse%252C%2522managed%2522%253A0%252C%2522changed%2522%253A0%252C%2522info%2522%253A%257B%2522cookieBlock%2522%253A%257B%2522level%2522%253A0%252C%2522blockRan%2522%253A0%257D%257D%257D; xb=919938; localization=en-us%253Bau%253Bau; flrbp=1663205583-0674f288e72f4e8104b4f65741341091de2a26b7; flrbgrp=1663205583-f7fc1bbc593797517ac7a2a1c010ad38756baa8e; flrbgdrp=1663205583-103b9fbf4fbf2f5c9488cdd1715a053235f6087d; flrbgmrp=1663205583-9eca20ebff8005673aba02bde2e185455aa91282; flrbrst=1663205583-e4da615bd90d28fceb2255538e6432d8aed2979f; flrtags=1663205583-4e67d76e272dfb3c5ddb42d96afdebf782ec8334; flrbrp=1663205583-2c2e8d70d55654a39037fab503690c04e184d71c; flrb=27'
-  }
-};
+const dotenv = require('dotenv');
+require('dotenv').config();
+const { createFlickr } = require('flickr-sdk');
 
-  axios
-    .request(options)
-    .then(function (response) {
-      // console.log(response.data);
-      res.json(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
+const { flickr } = createFlickr(`${process.env.flickr_api_key}`);
+router.get("/:birdName", async (req, res) => {
+  const query = req.params.birdName;
+  
+  try {
+    // Search for photos with the specified tag
+    const response = await flickr('flickr.photos.search', {
+      tags: query,
+      per_page: 2,
     });
+
+    // console.log('Flickr API response:', response.photos);
+    const photoUrls =response.photos.photo.map(photo => {
+      const farm=photo.farm;
+      const server = photo.server;
+      const id = photo.id;
+      const secret = photo.secret;
+      const photoUrl = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+      
+      return photoUrl;
+    })
+
+    // Return the actual photos data from the response body
+    res.json(photoUrls);
+
+  } catch (error) {
+    console.error("Error fetching data from Flickr API", error);
+    res.status(500).send("Error fetching data from Flickr API");
+  }
 });
+
 module.exports = router;
+
+//The following codes are no longer used as the flickr api cant not use the following to fetch the data in node.js anymore
+// const express = require("express");
+// const router = express.Router();
+// const axios = require("axios");
+
+// router.get("/:birdName", async (req, res) => {
+
+//   const query = req.params.birdName;
+  
+//   const flickrAPI = {
+//     method: 'get',
+//     url: `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&format=json&per_page=2&nojsoncallback=1`,
+//   };
+
+//   try {
+//     const response = await axios.request(flickrAPI);
+//     res.json(response.data);
+//   } catch (error) {
+//     console.error("Error fetching data from Flickr API"+ error);
+//     res.status(500).send("Error fetching data from Flickr API");
+//   }
+// });
+
+// module.exports = router;

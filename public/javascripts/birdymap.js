@@ -16,15 +16,17 @@ async function keyword() {
   let a = this.getPopup().getContent();
   search = a.slice(21);
   document.getElementById("search1").setAttribute("value", search);
-  document.getElementById("search1").style.color = "rgb(179, 82, 97);";
+  document.getElementById("search1").style.color = "rgb(179, 82, 97)";//this is the autofilled area
   try {
     const res = await fetch(`findYoutube` + "/" + search); //with the "bird", the result of videos will be more related to birds rather than showing sth that is not related to the bird
     const data = await res.json();
     video = `<iframe width="280" src="https://www.youtube.com/embed/${data.items[0].id.videoId}" title="YouTube" frameborder="0" allowfullscreen></iframe>`;
     document.getElementById("videos").innerHTML = video;
-    const resf = await fetch(`findPhotos` + "/" + search); //with the "bird", the result of videos will be more related to birds rather than showing sth that is not related to the bird
+    const resf = await fetch(`findPhotos` + "/" + search); //with the "bird", the result of videos will be more related to birds rather than showing sth that is not related to birds
     const dataf = await resf.json();
-    photos = `<img id="bimg" src="${dataf.items[0].media.m}" ></img><img  id="bimg" src="${dataf.items[2].media.m}" >`;
+    photos = `<img id="bimg" src="${dataf[0]}" ></img><img  id="bimg" src="${dataf[1]}" >`;
+    // since the flickr api for node.js is in a different way, the following commented code is no longer used
+    // photos = `<img id="bimg" src="${dataf.items[0].media.m}" ></img><img  id="bimg" src="${dataf.items[2].media.m}" >`;
     document.getElementById("photos").innerHTML = photos;
   } catch (e) {
     console.log(e);
